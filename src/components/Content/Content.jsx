@@ -1,13 +1,16 @@
 import s from './Content.module.css'
-import Posts from './Posts/Posts'
 import Profile from './Profile/Profile'
+import Dialogs from './Dialogs/Dialogs'
+import { BrowserRouter, Route } from 'react-router-dom'
 
 function Content() {
   return (
-    <div className={s.content}>
-        <Profile/>
-        <Posts/>
-    </div>
+    <BrowserRouter>
+      <div className={s.content}>
+        <Route path='/profile' component={Profile}/>
+        <Route path='/dialogs' component={Dialogs}/>
+      </div>
+    </BrowserRouter>
   );
 }
 

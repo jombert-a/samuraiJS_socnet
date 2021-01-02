@@ -1,4 +1,6 @@
 import s from './Profile.module.css'
+import Posts from '../Posts/Posts'
+
 function Profile() {
     return (
         <div className={s.profile}>
@@ -8,6 +10,7 @@ function Profile() {
                 <p>date of birthday</p>
                 <p>male/female</p>
                 <p>status</p>
+                <Posts />
             </div>
         </div>
     );

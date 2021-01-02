@@ -5,10 +5,10 @@ function NavBar() {
         <div className={s.navbar}>
             <ul>
                 <li>
-                    1. Main
+                    <a href='/profile'>main</a>
               </li>
                 <li>
-                    2. About
+                   <a href='/dialogs'>dialogs</a>
               </li>
             </ul>
         </div>
