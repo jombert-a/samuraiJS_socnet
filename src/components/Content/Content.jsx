@@ -1,9 +1,12 @@
 import s from './Content.module.css'
+import Posts from './Posts/Posts'
+import Profile from './Profile/Profile'
 
 function Content() {
   return (
     <div className={s.content}>
-        this is content
+        <Profile/>
+        <Posts/>
     </div>
   );
 }
