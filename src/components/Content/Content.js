@@ -1,6 +1,8 @@
+import s from './Content.module.css'
+
 function Content() {
   return (
-    <div className="content">
+    <div className={s.content}>
         this is content
     </div>
   );

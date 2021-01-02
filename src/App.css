@@ -13,23 +13,3 @@
   height: 100vh;
   margin: 0;
 }
-
-.header {
-  grid-area: header;
-  background-color: var(--main-col);
-}
-
-.navbar {
-  grid-area: navbar;
-  background-color: var(--main-col);
-}
-
-.content {
-  grid-area: content;
-  background-color: var(--main-col);
-}
-
-.footer {
-  grid-area: footer;
-  background-color: var(--main-col);
-}
