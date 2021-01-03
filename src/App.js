@@ -7,13 +7,13 @@ import Footer from './components/Footer/Footer';
 import { BrowserRouter } from 'react-router-dom'
 
 
-function App() {
+const App = (props) => {
   return (
     <div className="App">
       <BrowserRouter>
         <Header />
         <NavBar />
-        <Content />
+        <Content data={props.data}/>
         <Footer />
       </BrowserRouter>
     </div>
