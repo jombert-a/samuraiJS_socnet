@@ -9,7 +9,7 @@ const Profile = (props) => {
                 <p>{props.birthday}</p>
                 <p>{props.sex}</p>
                 <p>{props.status}</p>
-                <Posts postsData={props.data}/>
+                <Posts postsData={props.data.postsData}/>
             </div>
         </div>
     );
