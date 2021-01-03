@@ -1,8 +1,9 @@
 import s from './Messages.module.css'
 const Messages = (props) => {
     return (
-        <div className={s.messages}>
-            {props.text}
+        <div className={`${s.messages} ${props.data.pull == 'right' ? s.right : ''}`}>
+            <img src={props.data.avaSrc} />
+            {props.data.text}
         </div>
     );
 }
