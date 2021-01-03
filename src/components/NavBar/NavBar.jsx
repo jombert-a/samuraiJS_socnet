@@ -6,10 +6,10 @@ function NavBar() {
         <div className={s.navbar}>
             <ul>
                 <li>
-                    <NavLink to='/profile'>1. Main</NavLink>
+                    <NavLink to='/profile' activeClassName={s.active}>1. Main</NavLink>
               </li>
                 <li>
-                    <NavLink to='/dialogs'>2. Dialogs</NavLink>
+                    <NavLink to='/dialogs' activeClassName={s.active}>2. Dialogs</NavLink>
               </li>
             </ul>
         </div>

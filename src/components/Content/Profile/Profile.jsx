@@ -1,14 +1,14 @@
 import s from './Profile.module.css'
 import Posts from './Posts/Posts'
-function Profile() {
+function Profile(props) {
     return (
         <div className={s.profile}>
             <img src='https://cdn4.iconfinder.com/data/icons/education-circular-1-1/96/40-512.png' />
-            <span>name lastname</span>
+            <span>{props.name}</span>
             <div>
-                <p>date of birthday</p>
-                <p>male/female</p>
-                <p>status</p>
+                <p>{props.birthday}</p>
+                <p>{props.sex}</p>
+                <p>{props.status}</p>
                 <Posts/>
             </div>
         </div>

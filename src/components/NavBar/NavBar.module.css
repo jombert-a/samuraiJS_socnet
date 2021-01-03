@@ -2,4 +2,17 @@
     grid-area: navbar;
     background-color: var(--main-col);
 }
-  
+.navbar ul li {
+    list-style-type: none;
+    margin-bottom: 5px;
+}
+.navbar ul li a{
+    color: #fff;
+    text-decoration: none;
+}
+.navbar ul li a:hover {
+    opacity: 0.5;
+}
+.navbar ul li a.active {
+    color: #000;
+}
