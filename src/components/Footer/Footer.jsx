@@ -1,6 +1,6 @@
 import s from './Footer.module.css'
 
-function Footer() {
+const Footer = (props) => {
     return (
       <div className={s.footer}>
           Buye, world!

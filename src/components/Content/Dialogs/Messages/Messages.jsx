@@ -1,10 +1,8 @@
-import { NavLink } from 'react-router-dom';
 import s from './Messages.module.css'
-function Messages(props) {
-    let path = '/dialogs/' + props.id; 
+const Messages = (props) => {
     return (
         <div className={s.messages}>
-            test message
+            {props.text}
         </div>
     );
 }

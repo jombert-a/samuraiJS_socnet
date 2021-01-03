@@ -1,11 +1,17 @@
 import Post from './Post/Post'
 import s from './Posts.module.css'
-function Posts() {
+let postsData = [
+    {id: 1, message:'hello world!'},
+    {id: 2, message:'hello world!!'},
+    {id: 3, message:'hello world!!!'},
+    {id: 4, message:'hello world!!!!'},
+]
+let postsArray = postsData.map(el => <Post message={el.message} />);
+const Posts = (props) => {
     return (
         <div className={s.posts}>
             last posts
-            <Post message='hello world!'/>
-            <Post message='multi post'/>
+            {postsArray}
         </div>
     );
 }

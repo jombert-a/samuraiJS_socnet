@@ -1,5 +1,5 @@
 import s from './Header.module.css'
-function Header() {
+const Header = (props) => {
   return (
     <div className={s.header}>
       hello, world!
