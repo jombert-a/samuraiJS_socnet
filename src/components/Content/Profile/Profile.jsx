@@ -3,7 +3,7 @@ import Posts from './Posts/Posts'
 const Profile = (props) => {
     return (
         <div className={s.profile}>
-            <img src='https://cdn4.iconfinder.com/data/icons/education-circular-1-1/96/40-512.png' />
+            <img src='https://cdn4.iconfinder.com/data/icons/education-circular-1-1/96/40-512.png' alt='ava'/>
             <span>{props.name}</span>
             <div>
                 <p>{props.birthday}</p>

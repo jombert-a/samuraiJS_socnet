@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
@@ -13,7 +12,7 @@ const App = (props) => {
       <BrowserRouter>
         <Header />
         <NavBar />
-        <Content data={props.data}/>
+        <Content data={props.data} func={props.func}/>
         <Footer />
       </BrowserRouter>
     </div>

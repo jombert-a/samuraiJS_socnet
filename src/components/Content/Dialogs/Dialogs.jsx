@@ -9,7 +9,7 @@ const Dialogs = (props) => {
 
     let addMessage = () => {
         let text = newMessageArea.current.value;
-        alert(text);
+        props.func(text);
     }
     return (
         <div className={s.dialogsWrapper}>

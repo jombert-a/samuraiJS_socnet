@@ -1,3 +1,4 @@
+import {rerenderTree} from '../render.js';
 const state = {
     profilePage: {
         postsData: [
@@ -20,6 +21,14 @@ const state = {
             { id: 3, text: 'tests', pull: 'left', avaSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhrlLIB_yz1NY_TJa367195pdbv-krOKRndw&usqp=CAU' }
         ]
     }
+}
+
+export const addMessage = (message) => {
+    const newMessage = {
+        id: 4, text: message, pull: 'left', avaSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhrlLIB_yz1NY_TJa367195pdbv-krOKRndw&usqp=CAU'
+    }
+    state.dialogsPage.messagesData.push(newMessage);
+    rerenderTree(state, addMessage);
 }
 
 export default state;
