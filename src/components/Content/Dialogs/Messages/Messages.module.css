@@ -2,7 +2,7 @@
     display: flex;
 }
 
-.messages.right {
+.right {
     flex-direction: row-reverse;
 }
 
