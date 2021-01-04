@@ -8,7 +8,7 @@ const Content = (props) => {
   return (
     <div className={s.content}>
       <Route path='/profile' render={() => <Profile data={props.data.profilePage} />} />
-      <Route path='/dialogs' render={() => <Dialogs data={props.data.dialogsPage} func={props.func} />} />
+      <Route path='/dialogs' render={() => <Dialogs data={props.data.dialogsPage}/>} />
     </div>
   );
 }

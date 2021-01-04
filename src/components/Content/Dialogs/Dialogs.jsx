@@ -8,8 +8,12 @@ const Dialogs = (props) => {
     let newMessageArea = React.createRef();
 
     let addMessage = () => {
+        props.data.dialogsFunc.addMessage(props.data.newMessageText);
+    }
+
+    let updateNewMessage = () => {
         let text = newMessageArea.current.value;
-        props.func(text);
+        props.data.dialogsFunc.updateNewMessage(text);
     }
     return (
         <div className={s.dialogsWrapper}>
@@ -19,7 +23,7 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 {messagesArray}
                 <div className={s.addmessage}>
-                    <textarea ref={newMessageArea}></textarea>
+                    <textarea onChange={updateNewMessage} ref={newMessageArea} value={props.data.newMessageText}></textarea>
                     <button onClick={addMessage}>Send message</button>
                 </div>
             </div>

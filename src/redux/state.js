@@ -1,4 +1,4 @@
-import {rerenderTree} from '../render.js';
+import { rerenderTree } from '../render.js';
 const state = {
     profilePage: {
         postsData: [
@@ -19,16 +19,26 @@ const state = {
             { id: 1, text: 'test', pull: 'left', avaSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhrlLIB_yz1NY_TJa367195pdbv-krOKRndw&usqp=CAU' },
             { id: 2, text: 'testing', pull: 'right', avaSrc: 'https://lh3.googleusercontent.com/proxy/g--_wHFHwEPLH_sbvlAV48AuQ0ldjYnK6TzRviQGai0EvCGCMLzPEqTabXEEbZlvkaiR2kGvF7Yh6iclfZode5qZ6Ff2soDbdZGwBs1IvVi1fLGC1wn7VbRIGiZmu9iWYzGbZc0Cu8sA' },
             { id: 3, text: 'tests', pull: 'left', avaSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhrlLIB_yz1NY_TJa367195pdbv-krOKRndw&usqp=CAU' }
-        ]
+        ],
+        newMessageText: '',
+        dialogsFunc: {
+            addMessage: () => {
+                const newMessage = {
+                    id: 4, text: state.dialogsPage.newMessageText, pull: 'left', avaSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhrlLIB_yz1NY_TJa367195pdbv-krOKRndw&usqp=CAU'
+                }
+                state.dialogsPage.messagesData.push(newMessage);
+                state.dialogsPage.newMessageText = '';
+                rerenderTree(state, addMessage);
+            },
+            updateNewMessage: (message) => {
+                state.dialogsPage.newMessageText = message;
+                rerenderTree(state, addMessage);
+            }
+        }
     }
 }
 
 export const addMessage = (message) => {
-    const newMessage = {
-        id: 4, text: message, pull: 'left', avaSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhrlLIB_yz1NY_TJa367195pdbv-krOKRndw&usqp=CAU'
-    }
-    state.dialogsPage.messagesData.push(newMessage);
-    rerenderTree(state, addMessage);
 }
 
 export default state;
