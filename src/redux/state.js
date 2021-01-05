@@ -1,3 +1,6 @@
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
+
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
 
@@ -37,38 +40,11 @@ let store = {
     getState() { return this._state },
     subscribe(observer) { this._rerenderTree = observer; },
     dispatch(action) {
-        switch (action.type) {
-            case ADD_MESSAGE:
-                const newMessage = {
-                    id: 4, text: this._state.dialogsPage.newMessageText, pull: 'left', avaSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhrlLIB_yz1NY_TJa367195pdbv-krOKRndw&usqp=CAU'
-                }
-                this._state.dialogsPage.messagesData.push(newMessage);
-                this._state.dialogsPage.newMessageText = '';
-                this._rerenderTree(this._state);
-                break;
-            case UPDATE_NEW_MESSAGE:
-                this._state.dialogsPage.newMessageText = action.message;
-                this._rerenderTree(this._state);
-                break;
-            case ADD_POST:
-                const newPost = {
-                    id: 5, message: this._state.profilePage.newPostText
-                }
-                this._state.profilePage.postsData.push(newPost);
-                this._state.profilePage.newPostText = '';
-                this._rerenderTree(this._state);
-                break;
-            case UPDATE_NEW_POST:
-                this._state.profilePage.newPostText = action.message;
-                this._rerenderTree(this._state);
-                break;
-        }
+        profileReducer(this._state.profilePage, action);
+        dialogsReducer(this._state.dialogsPage, action);
+        this._rerenderTree(this._state);
     }
 }
-export const addMessageActionCreater = () => ({ type: ADD_MESSAGE })
-export const updateNewMessageActionCreater = (text) => ({
-    type: UPDATE_NEW_MESSAGE, message: text
-})
 export const addPostActionCreater = () => ({ type: ADD_POST })
 export const updateNewPostActionCreater = (text) => ({
     type: UPDATE_NEW_POST, message: text

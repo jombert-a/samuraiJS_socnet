@@ -5,7 +5,9 @@ const Posts = (props) => {
     return (
         <div className={s.posts}>
             last posts
-            {postsArray}
+            <div className={s.postsInner}>
+                {postsArray}
+            </div>
         </div>
     );
 }

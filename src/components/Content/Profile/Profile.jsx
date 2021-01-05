@@ -1,7 +1,7 @@
 import s from './Profile.module.css'
 import Posts from './Posts/Posts'
 import React from 'react';
-import { addPostActionCreater, updateNewPostActionCreater } from '../../../redux/state';
+import { addPostActionCreater, updateNewPostActionCreater } from '../../../redux/profileReducer';
 
 const Profile = (props) => {
     let newPostArea = React.createRef();
@@ -20,15 +20,15 @@ const Profile = (props) => {
         <div className={s.profile}>
             <img src='https://cdn4.iconfinder.com/data/icons/education-circular-1-1/96/40-512.png' alt='ava' />
             <span>{props.name}</span>
-            <div>
+            <div className={s.profileWrapper}>
                 <p>{props.birthday}</p>
                 <p>{props.sex}</p>
                 <p>{props.status}</p>
-                <Posts postsData={props.data.postsData} />
                 <div className={s.addpost}>
                     <textarea onChange={updateNewPost} ref={newPostArea} value={props.data.newPostText} />
                     <button onClick={addPost}>Post it!</button>
                 </div>
+                <Posts postsData={props.data.postsData} />
             </div>
         </div>
     );
