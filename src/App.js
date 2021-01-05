@@ -12,7 +12,7 @@ const App = (props) => {
       <BrowserRouter>
         <Header />
         <NavBar />
-        <Content data={props.data} addMessage={props.addMessage} updateNewMessage={props.updateNewMessage}/>
+        <Content data={props.data} dispatch={props.dispatch} />
         <Footer />
       </BrowserRouter>
     </div>

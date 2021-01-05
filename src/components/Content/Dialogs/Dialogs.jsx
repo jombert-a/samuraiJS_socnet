@@ -8,12 +8,12 @@ const Dialogs = (props) => {
     let newMessageArea = React.createRef();
 
     let addMessage = () => {
-        props.addMessage(props.data.newMessageText);
+        props.dispatch({ type: "ADD-MESSAGE" });
     }
 
     let updateNewMessage = () => {
         let text = newMessageArea.current.value;
-        props.updateNewMessage(text);
+        props.dispatch({ type: "UPDATE-NEW-MESSAGE", message: text })
     }
     return (
         <div className={s.dialogsWrapper}>
