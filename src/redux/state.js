@@ -1,3 +1,10 @@
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
+
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
+
+
 let store = {
     _state: {
         profilePage: {
@@ -6,7 +13,8 @@ let store = {
                 { id: 2, message: 'hello world!!' },
                 { id: 3, message: 'hello world!!!' },
                 { id: 4, message: 'hello world!!!!' },
-            ]
+            ],
+            newPostText: ''
         },
         dialogsPage: {
             dialogsData: [
@@ -30,7 +38,7 @@ let store = {
     subscribe(observer) { this._rerenderTree = observer; },
     dispatch(action) {
         switch (action.type) {
-            case 'ADD-MESSAGE':
+            case ADD_MESSAGE:
                 const newMessage = {
                     id: 4, text: this._state.dialogsPage.newMessageText, pull: 'left', avaSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhrlLIB_yz1NY_TJa367195pdbv-krOKRndw&usqp=CAU'
                 }
@@ -38,11 +46,31 @@ let store = {
                 this._state.dialogsPage.newMessageText = '';
                 this._rerenderTree(this._state);
                 break;
-            case 'UPDATE-NEW-MESSAGE':
+            case UPDATE_NEW_MESSAGE:
                 this._state.dialogsPage.newMessageText = action.message;
+                this._rerenderTree(this._state);
+                break;
+            case ADD_POST:
+                const newPost = {
+                    id: 5, message: this._state.profilePage.newPostText
+                }
+                this._state.profilePage.postsData.push(newPost);
+                this._state.profilePage.newPostText = '';
+                this._rerenderTree(this._state);
+                break;
+            case UPDATE_NEW_POST:
+                this._state.profilePage.newPostText = action.message;
                 this._rerenderTree(this._state);
                 break;
         }
     }
 }
+export const addMessageActionCreater = () => ({ type: ADD_MESSAGE })
+export const updateNewMessageActionCreater = (text) => ({
+    type: UPDATE_NEW_MESSAGE, message: text
+})
+export const addPostActionCreater = () => ({ type: ADD_POST })
+export const updateNewPostActionCreater = (text) => ({
+    type: UPDATE_NEW_POST, message: text
+})
 export default store;

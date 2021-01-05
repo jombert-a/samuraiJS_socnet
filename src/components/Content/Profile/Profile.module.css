@@ -3,3 +3,12 @@
     height: 50px;
     border-radius: 100%;
 }
+
+.addpost {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+.addpost textarea {
+    width: 100%;
+}

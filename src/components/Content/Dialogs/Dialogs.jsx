@@ -2,18 +2,21 @@ import Dialog from './Dialog/Dialog'
 import s from './Dialogs.module.css'
 import Messages from './Messages/Messages'
 import React from 'react';
+import { addMessageActionCreater, updateNewMessageActionCreater } from '../../../redux/state';
 const Dialogs = (props) => {
     let dialogsArray = props.data.dialogsData.map(el => <Dialog name={el.name} id={el.id} avaSrc={el.avaSrc} />);
     let messagesArray = props.data.messagesData.map(el => <Messages data={el} />);
     let newMessageArea = React.createRef();
 
     let addMessage = () => {
-        props.dispatch({ type: "ADD-MESSAGE" });
+        let action = addMessageActionCreater();
+        props.dispatch(action);
     }
 
     let updateNewMessage = () => {
         let text = newMessageArea.current.value;
-        props.dispatch({ type: "UPDATE-NEW-MESSAGE", message: text })
+        let action = updateNewMessageActionCreater(text);
+        props.dispatch(action)
     }
     return (
         <div className={s.dialogsWrapper}>
