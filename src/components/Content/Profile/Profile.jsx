@@ -1,21 +1,20 @@
 import s from './Profile.module.css'
 import Posts from './Posts/Posts'
 import React from 'react';
-import { addPostActionCreater, updateNewPostActionCreater } from '../../../redux/profileReducer';
 
 const Profile = (props) => {
+    
     let newPostArea = React.createRef();
 
     let addPost = () => {
-        let action = addPostActionCreater();
-        props.dispatch(action);
+        props.addPost();
     }
 
     let updateNewPost = () => {
         let text = newPostArea.current.value;
-        let action = updateNewPostActionCreater(text);
-        props.dispatch(action)
+        props.updateNewPost(text);
     }
+
     return (
         <div className={s.profile}>
             <img src='https://cdn4.iconfinder.com/data/icons/education-circular-1-1/96/40-512.png' alt='ava' />
