@@ -1,8 +1,10 @@
 import s from './Header.module.css'
+import logo from '../../logo.svg';
 const Header = (props) => {
   return (
     <div className={s.header}>
-      hello, world!
+      <img src={logo} className={s.logo} alt="logo" />
+      <p>Hello-world-Social-net-on-React</p>
     </div>
   );
 }

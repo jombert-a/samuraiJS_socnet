@@ -1,4 +1,10 @@
 .footer {
     grid-area: footer;
     background-color: var(--main-col);
+    display: fixed;
+}
+
+.footer span {
+    display: flex;
+    justify-content: center;
 }

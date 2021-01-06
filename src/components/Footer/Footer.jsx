@@ -3,7 +3,7 @@ import s from './Footer.module.css'
 const Footer = (props) => {
     return (
       <div className={s.footer}>
-          Buye, world!
+          <span>made by r.akhiiarov</span>
       </div>
     );
   }

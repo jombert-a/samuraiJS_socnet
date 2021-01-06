@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import store from './redux/store';
 
 let rerenderTree = (state) => {
-  debugger;
   ReactDOM.render(
     <React.StrictMode>
       <App store={store} />

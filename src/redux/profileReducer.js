@@ -2,6 +2,12 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
 
 let initialState = {
+    profileData: {
+        name: 'robert',
+        birthday: '18.08.1999',
+        gender: 'male',
+        status: 'student'
+    },
     postsData: [
         { id: 1, message: 'hello world!' },
         { id: 2, message: 'hello world!!' },

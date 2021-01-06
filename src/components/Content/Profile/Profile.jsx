@@ -3,7 +3,7 @@ import Posts from './Posts/Posts'
 import React from 'react';
 
 const Profile = (props) => {
-    
+
     let newPostArea = React.createRef();
 
     let addPost = () => {
@@ -15,14 +15,19 @@ const Profile = (props) => {
         props.updateNewPost(text);
     }
 
+    let pD = props.data.profileData;
     return (
         <div className={s.profile}>
-            <img src='https://cdn4.iconfinder.com/data/icons/education-circular-1-1/96/40-512.png' alt='ava' />
-            <span>{props.name}</span>
+            <div className={s.profileHeader}>
+                <div className={s.profileHeader__ava}>
+                    <img src='https://cdn4.iconfinder.com/data/icons/education-circular-1-1/96/40-512.png' alt='ava' />
+                    <span>{pD.name}</span>
+                </div>
+                <p>{pD.birthday}</p>
+                <p>{pD.gender}</p>
+                <p>{pD.status}</p>
+            </div>
             <div className={s.profileWrapper}>
-                <p>{props.birthday}</p>
-                <p>{props.sex}</p>
-                <p>{props.status}</p>
                 <div className={s.addpost}>
                     <textarea onChange={updateNewPost} ref={newPostArea} value={props.data.newPostText} />
                     <button onClick={addPost}>Post it!</button>
