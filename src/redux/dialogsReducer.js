@@ -22,12 +22,16 @@ let dialogsReducer = (state = initialState, action) => {
             const newMessage = {
                 id: 4, text: state.newMessageText, pull: 'left', avaSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhrlLIB_yz1NY_TJa367195pdbv-krOKRndw&usqp=CAU'
             }
-            state.messagesData.push(newMessage);
-            state.newMessageText = '';
-            return state;
+            return {
+                ...state,
+                newMessageText: '',
+                messagesData: [...state.messagesData, newMessage]
+            }
         case UPDATE_NEW_MESSAGE:
-            state.newMessageText = action.message;
-            return state;
+            return {
+                ...state,
+                newMessageText: action.message
+            }
         default:
             return state;
     }

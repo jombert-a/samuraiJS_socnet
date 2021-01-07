@@ -3,7 +3,6 @@ import s from './Dialogs.module.css'
 import Messages from './Messages/Messages'
 import React from 'react';
 const Dialogs = (props) => {
-
     let dialogsArray = props.data.dialogsData.map(el => 
         <Dialog name={el.name} id={el.id} avaSrc={el.avaSrc} />);
 
