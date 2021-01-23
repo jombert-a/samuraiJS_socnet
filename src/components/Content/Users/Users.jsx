@@ -1,25 +1,29 @@
 import React from 'react';
+import User from './User/User';
+import s from './Users.module.css';
 
 let Users = props => {
-    if (props.data.usersData.length === 0) {
-        debugger
-        props.setUsers([
-            { id: 1, name: 'ivan', status: 'looking for job', city: 'ufa', followed: true },
-            { id: 2, name: 'igor', status: 'not looking for job', city: 'moscow', followed: false },
-            { id: 3, name: 'stas', status: 'i am so happy', city: 'kazab', followed: true },
-            { id: 4, name: 'dima', status: 'looking for job too', city: 'saint p', followed: false },
-            { id: 5, name: 'dima', status: 'looking for job too', city: 'saint p', followed: false }
-        ])
+    let usersArray = props.data.data.usersData.map(el => <User data={el} follow={props.data.follow} unfollow={props.data.unfollow} />)
+    let pagesCount = Math.ceil(props.data.data.totalUsersCount / props.data.data.pageSize);
+    let pages = [];
+    for (let i = 1; i < pagesCount + 1; i++) {
+        pages.push(i);
     }
     return (
         <div>
-            {
-                props.data.usersData.map(u =>
-                    <div key={u.id}>
-                        {u.name}
-                    </div>
-                )
-            }
+            <div>
+                {
+                    pages.map(el => {
+                        return <span className={props.data.data.currentPage === el && s.selectedPage}
+                            onClick={() => props.data.setCurrentPage(el)}>
+                            {el}
+                        </span>
+                    })
+                }
+            </div>
+            <div>
+                {usersArray}
+            </div>
         </div>
     )
 

@@ -4,7 +4,7 @@ const Header = (props) => {
   return (
     <div className={s.header}>
       <img src={logo} className={s.logo} alt="logo" />
-      <p>Hello-world-Social-net-on-React</p>
+      <p>Travel-Social-net-on-React</p>
     </div>
   );
 }

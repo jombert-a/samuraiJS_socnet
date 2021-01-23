@@ -3,19 +3,18 @@ import Posts from './Posts/Posts'
 import React from 'react';
 
 const Profile = (props) => {
-
     let newPostArea = React.createRef();
 
     let addPost = () => {
-        props.addPost();
+        props.data.addPost();
     }
 
     let updateNewPost = () => {
         let text = newPostArea.current.value;
-        props.updateNewPost(text);
+        props.data.updateNewPost(text);
     }
 
-    let pD = props.data.profileData;
+    let pD = props.data.data.profileData;
     return (
         <div className={s.profile}>
             <div className={s.profileHeader}>
@@ -29,10 +28,10 @@ const Profile = (props) => {
             </div>
             <div className={s.profileWrapper}>
                 <div className={s.addpost}>
-                    <textarea onChange={updateNewPost} ref={newPostArea} value={props.data.newPostText} />
+                    <textarea onChange={updateNewPost} ref={newPostArea} value={props.data.data.newPostText} />
                     <button onClick={addPost}>Post it!</button>
                 </div>
-                <Posts postsData={props.data.postsData} />
+                <Posts postsData={props.data.data.postsData} />
             </div>
         </div>
     );

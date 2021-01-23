@@ -1,0 +1,17 @@
+.user {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.photoWrapper {
+    max-width: 50px;
+    max-height: 50px;
+    align-self: center;
+    margin-right: 5px;
+}
+
+.photoWrapper img {
+    height: 100%;
+    width: 100%;
+}
