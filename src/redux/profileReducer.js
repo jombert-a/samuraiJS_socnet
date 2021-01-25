@@ -1,12 +1,13 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
+const SET_PROFILE = 'SET-PROFILE';
+const TOOGLE_IS_FETCHING = 'TOOGLE-IS-FETCHING';
 
 let initialState = {
     profileData: {
-        name: 'robert',
-        birthday: '18.08.1999',
-        gender: 'male',
-        status: 'student'
+        fullName: '',
+        photo: '',
+        aboutMe: ''
     },
     postsData: [
         { id: 1, message: 'hello world!' },
@@ -14,7 +15,9 @@ let initialState = {
         { id: 3, message: 'hello world!!!' },
         { id: 4, message: 'hello world!!!!' },
     ],
-    newPostText: ''
+    newPostText: '',
+    isFetching: false
+
 }
 
 let profileReducer = (state = initialState, action) => {
@@ -33,13 +36,33 @@ let profileReducer = (state = initialState, action) => {
                 ...state,
                 newPostText: action.message
             }
+        case SET_PROFILE:
+            return {
+                ...state,
+                profileData: {
+                    fullName: action.data.fullName,
+                    aboutMe: action.data.aboutMe,
+                    photo: action.data.photos.large
+                }
+            }
+        case TOOGLE_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
         default:
             return state;
     }
 }
-export const addPost = () => ({ type: ADD_POST })
+export const addPost = () => ({
+    type: ADD_POST
+})
 export const updateNewPost = (text) => ({
     type: UPDATE_NEW_POST, message: text
 })
+export const setProfile = (data) => ({
+    type: SET_PROFILE, data
+})
+export const toogleIsFetching = (isFetching) => ({ type: TOOGLE_IS_FETCHING, isFetching })
 
 export default profileReducer;

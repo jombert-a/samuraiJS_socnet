@@ -36,3 +36,8 @@
 .addpost textarea {
     width: 100%;
 }
+
+.preloader {
+    position: absolute;
+    left: calc(50% - 100px);
+}

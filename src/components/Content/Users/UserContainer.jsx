@@ -1,37 +1,35 @@
 import React from 'react';
 import Users from './Users';
-import { follow, unfollow, setUsers, setCurrentPage } from '../../../redux/usersReducer';
+import { follow, unfollow, setUsers, setCurrentPage, toogleIsFetching } from '../../../redux/usersReducer';
 import { connect } from 'react-redux'
+import * as axios from 'axios';
+import preloader from '../../../commonImages/Spinner-1s-200px.svg';
+import s from './Users.module.css';
 
 class UserContainer extends React.Component {
     componentDidMount() {
-        if (this.props.data.usersData.length == 0) {
-            this.props.setUsers([
-                {
-                    id: 1, name: 'ivan', status: 'looking for job', location: { city: 'ufa', country: 'russia' }, followed: true,
-                    photoURL: 'https://imgur.com/I80W1Q0.png'
-                },
-                {
-                    id: 2, name: 'igor', status: 'not looking for job', location: { city: 'moscow', country: 'russia' }, followed: false,
-                    photoURL: 'https://imgur.com/I80W1Q0.png'
-                },
-                {
-                    id: 3, name: 'stas', status: 'i am so happy', location: { city: 'kazan', country: 'russia' }, followed: true,
-                    photoURL: 'https://imgur.com/I80W1Q0.png'
-                },
-                {
-                    id: 4, name: 'dima', status: 'looking for job too', location: { city: 'ufa', country: 'russia' }, followed: false,
-                    photoURL: 'https://imgur.com/I80W1Q0.png'
-                },
-                {
-                    id: 5, name: 'dima', status: 'looking for job too', location: { city: 'ufa', country: 'russia' }, followed: false,
-                    photoURL: 'https://imgur.com/I80W1Q0.png'
-                }
-            ]);
-        }
+        this.props.toogleIsFetching(true);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.data.currentPage}&count=${this.props.data.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items);
+                this.props.toogleIsFetching(false); 
+            });
+    }
+    onPageChanged = (pageNumber) => {
+        this.props.toogleIsFetching(true);
+        this.props.setCurrentPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.data.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items);
+                this.props.toogleIsFetching(false);
+            });
+        
     }
     render() {
-        return <Users data={this.props}/>
+        return <>
+            {this.props.data.isFetching ? <img src={preloader} alt='preloader' className={s.preloader}/> : null}
+            <Users {...this.props} onPageChanged={this.onPageChanged}/>
+        </>
     }
 }
 
@@ -41,4 +39,4 @@ let mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {follow, unfollow, setUsers, setCurrentPage})(UserContainer)
+export default connect(mapStateToProps, { follow, unfollow, setUsers, setCurrentPage, toogleIsFetching })(UserContainer)

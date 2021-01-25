@@ -2,16 +2,31 @@
     grid-area: header;
     background-color: var(--main-col);
     display: flex;
+    justify-content: space-between;
 }
 
-.header .logo {
+.header .header__left {
+    display: flex;
+}
+
+.header .header__left .logo {
     height: 100%;
 }
 
-.header p {
+.header .header__left p {
     display: flex;
     align-items: center;
     font-size: 2vw;
     height: 100%;
     margin: 0;
+}
+
+.header .header__right {
+    align-self: center;
+    padding-right: 15px;
+}
+.header .header__right a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 22px;
 }

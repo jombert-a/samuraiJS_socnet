@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class DialogsContainer extends React.Component {
     componentDidMount() { }
     render() {
-        return <Dialogs data={this.props} />
+        return <Dialogs {...this.props} />
     }
 }
 const mapStateToProps = (state) => {

@@ -5,13 +5,14 @@ import Content from './components/Content/Content';
 import Footer from './components/Footer/Footer';
 import { BrowserRouter } from 'react-router-dom'
 import {Provider} from 'react-redux'
+import HeaderContainer from './components/Header/HeaderContainer';
 
 const App = (props) => {
   return (
     <BrowserRouter>
       <Provider store={props.store}>
         <div className="App">
-          <Header />
+          <HeaderContainer store={props.store}/>
           <NavBar />
           <Content store={props.store} />
           <Footer />
