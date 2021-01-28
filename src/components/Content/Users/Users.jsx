@@ -3,7 +3,7 @@ import User from './User/User';
 import s from './Users.module.css';
 
 let Users = props => {
-    let usersArray = props.data.usersData.map(el => <User data={el} follow={props.follow} unfollow={props.unfollow} />)
+    let usersArray = props.data.usersData.map(el => <User data={el} followingProcess={props.data.followingProcess} follow={props.follow} unfollow={props.unfollow} toogleFollowingProcess={props.toogleFollowingProcess} />)
     let pagesCount = Math.ceil(props.data.totalUsersCount / props.data.pageSize);
     let pages = [];
     for (let i = 1; i < pagesCount + 1; i++) {

@@ -3,14 +3,16 @@ const UNFOLLOW_USER = ' UNFOLLOW-USER'
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_USERS = 'SET-USERS';
 const TOOGLE_IS_FETCHING = 'TOOGLE-IS-FETCHING';
+const TOOGLE_FOLLOWING_PROCESS = 'TOOGLE_FOLLOWING_PROCESS';
 
 
 let initialState = {
-    usersData: [ ],
+    usersData: [],
     pageSize: 6,
     totalUsersCount: 18,
     currentPage: 1,
-    isFetching: false
+    isFetching: false,
+    followingProcess: []
 }
 
 let usersReducer = (state = initialState, action) => {
@@ -36,11 +38,11 @@ let usersReducer = (state = initialState, action) => {
                 })
             }
         case SET_USERS:
-            return { 
-                ...state, 
+            return {
+                ...state,
                 usersData: action.users
             }
-        case SET_CURRENT_PAGE: 
+        case SET_CURRENT_PAGE:
             return {
                 ...state,
                 currentPage: action.currentPage
@@ -50,13 +52,21 @@ let usersReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.isFetching
             }
+        case TOOGLE_FOLLOWING_PROCESS:
+            return {
+                ...state,
+                followingProcess: action.isFollowingProcess
+                    ? [...state.followingProcess, action.userId]
+                    : state.followingProcess.filter(id => id !== action.userId)
+            }
         default:
             return state;
     }
 }
-export const follow   = (userId) => ({ type: FOLLOW_USER, userId })
+export const follow = (userId) => ({ type: FOLLOW_USER, userId })
 export const unfollow = (userId) => ({ type: UNFOLLOW_USER, userId })
-export const setUsers = (users)  => ({ type: SET_USERS, users })
-export const setCurrentPage = (currentPage)  => ({ type: SET_CURRENT_PAGE, currentPage })
-export const toogleIsFetching = (isFetching) => ({type: TOOGLE_IS_FETCHING, isFetching})
+export const setUsers = (users) => ({ type: SET_USERS, users })
+export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
+export const toogleIsFetching = (isFetching) => ({ type: TOOGLE_IS_FETCHING, isFetching })
+export const toogleFollowingProcess = (isFollowingProcess, userId) => ({ type: TOOGLE_FOLLOWING_PROCESS, isFollowingProcess, userId })
 export default usersReducer;

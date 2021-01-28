@@ -25,24 +25,3 @@ let mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, { setCoords })(MapContainer)
-
-// const MapContainer = () => {
-
-//     navigator.geolocation.getCurrentPosition(
-//         (position) => setCoords({
-//             lat: position.coords.latitude,
-//             long: position.coords.latitude
-//         })
-//     );
-
-//     setCoords({
-//         lat: 54.818432,
-//         long: 56.058251
-//     });
-
-//     debugger;
-
-//     return (
-//         <Map />
-//     );
-// }

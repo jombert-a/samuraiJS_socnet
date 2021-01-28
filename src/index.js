@@ -5,17 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/store';
 
-let rerenderTree = (state) => {
-  ReactDOM.render(
-      <App store={store} />,
-    document.getElementById('root')
-  );
-}
+ReactDOM.render(
+  <App store={store} />,
+  document.getElementById('root')
+);
 
-rerenderTree(store.getState());
+// rerenderTree(store.getState());
 
-store.subscribe(() => {
-  rerenderTree(store.getState());
-});
+// store.subscribe(() => {
+//   rerenderTree(store.getState());
+// });
 
 reportWebVitals();
