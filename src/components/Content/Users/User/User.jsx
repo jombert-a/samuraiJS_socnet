@@ -2,7 +2,6 @@ import React from 'react';
 import s from './User.module.css';
 import userSmallPhoto from '../../../../commonImages/userSmallPhoto.png'
 import { NavLink } from 'react-router-dom';
-import { followAPI, unfollowAPI } from '../../../../api/api';
 
 let User = props => {
 
@@ -27,22 +26,10 @@ let User = props => {
                     {
                         props.data.followed ?
                             <button disabled={props.followingProcess.some(id => id === props.data.id)} onClick={() => {
-                                unfollowAPI(props.data.id, props.toogleFollowingProcess)
-                                    .then(response => {
-                                        if (response.data.resultCode === 0) {
-                                            props.unfollow(props.data.id)
-                                        }
-                                        props.toogleFollowingProcess(false, props.data.id); 
-                                    });
+                                props.unfollowThunkCreator(props.data.id);
                             }}>unfollow</button>
                             : <button disabled={props.followingProcess.some(id => id === props.data.id)} onClick={() => {
-                                followAPI(props.data.id, props.toogleFollowingProcess)
-                                    .then(response => {
-                                        if (response.data.resultCode === 0) {
-                                            props.follow(props.data.id)
-                                        }
-                                        props.toogleFollowingProcess(false, props.data.id);  
-                                    });
+                                props.followThunkCreator(props.data.id);
                             }}>follow</button>
                     }
                 </div>

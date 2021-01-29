@@ -1,3 +1,5 @@
+import { getProfile } from "../api/api";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
 const SET_PROFILE = 'SET-PROFILE';
@@ -64,5 +66,14 @@ export const setProfile = (data) => ({
     type: SET_PROFILE, data
 })
 export const toogleIsFetching = (isFetching) => ({ type: TOOGLE_IS_FETCHING, isFetching })
-
+export const getProfileThunkCreator = (matchUserId, authUserId) => (dispatch) => {
+    dispatch(toogleIsFetching(true));
+    let userId = matchUserId;
+    if (!userId) userId = authUserId;
+    getProfile(userId)
+        .then(data => {
+            dispatch(setProfile(data));
+            dispatch(toogleIsFetching(false));
+        });
+}
 export default profileReducer;

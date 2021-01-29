@@ -1,29 +1,18 @@
 import React from 'react';
 import Users from './Users';
-import { follow, unfollow, setUsers, setCurrentPage, toogleIsFetching, toogleFollowingProcess } from '../../../redux/usersReducer';
+import { follow, unfollow, setUsers, setCurrentPage, getUsersThunkCreator, followThunkCreator, 
+    unfollowThunkCreator } from '../../../redux/usersReducer';
 import { connect } from 'react-redux'
 import preloader from '../../../commonImages/Spinner-1s-200px.svg';
 import s from './Users.module.css';
-import { getUsers } from '../../../api/api';
 
 class UserContainer extends React.Component {
 
     componentDidMount() {
-        this.props.toogleIsFetching(true);
-        getUsers(this.props.data.pageNumber, this.props.data.pageSize)
-            .then(data => {
-                this.props.setUsers(data.items);
-                this.props.toogleIsFetching(false);
-            });
+        this.props.getUsersThunkCreator(this.props.data.currentPage, this.props.data.pageSize);
     }
     onPageChanged = (pageNumber) => {
-        this.props.toogleIsFetching(true);
-        this.props.setCurrentPage(pageNumber);
-        getUsers(pageNumber, this.props.data.pageSize)
-            .then(data => {
-                this.props.setUsers(data.items);
-                this.props.toogleIsFetching(false);
-            });
+        this.props.getUsersThunkCreator(pageNumber, this.props.data.pageSize);
     }
     render() {
         return <>
@@ -40,4 +29,6 @@ let mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps,
-    { follow, unfollow, setUsers, setCurrentPage, toogleIsFetching, toogleFollowingProcess })(UserContainer)
+    { follow, unfollow, setUsers, setCurrentPage, 
+    getUsersThunkCreator,
+    followThunkCreator, unfollowThunkCreator })(UserContainer)

@@ -1,3 +1,5 @@
+import { followAPI, getUsers, unfollowAPI } from "../api/api";
+
 const FOLLOW_USER = 'FOLLOW-USER';
 const UNFOLLOW_USER = ' UNFOLLOW-USER'
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
@@ -62,6 +64,38 @@ let usersReducer = (state = initialState, action) => {
         default:
             return state;
     }
+}
+export const getUsersThunkCreator = (pageNumber, pageSize) => {
+    return (dispatch) => {
+        dispatch(toogleIsFetching(true));
+        dispatch(setCurrentPage(pageNumber))
+        getUsers(pageNumber, pageSize)
+            .then(data => {
+                dispatch(setUsers(data.items));
+                dispatch(toogleIsFetching(false));
+            });
+    }
+}
+export const followThunkCreator = (userId) => dispatch => {
+    dispatch(toogleFollowingProcess(true, userId));
+    followAPI(userId)
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(follow(userId))
+            }
+            dispatch(toogleFollowingProcess(false, userId));
+        });
+
+}
+export const unfollowThunkCreator = (userId) => dispatch => {
+    dispatch(toogleFollowingProcess(true, userId));
+    unfollowAPI(userId)
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(unfollow(userId))
+            }
+            dispatch(toogleFollowingProcess(false, userId));
+        });
 }
 export const follow = (userId) => ({ type: FOLLOW_USER, userId })
 export const unfollow = (userId) => ({ type: UNFOLLOW_USER, userId })

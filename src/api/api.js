@@ -13,17 +13,16 @@ export function getUsers(currentPage, pageSize) {
         .then(response => response.data);
 }
 
+
 export function getProfile(userId) {
     return instanse.get(`profile/${userId}`)
         .then(response => response.data);
 }
 
-export function unfollowAPI(userId, toogleFollowingProcess) {
-    toogleFollowingProcess(true, userId);
+export function unfollowAPI(userId) {
     return instanse.delete(`follow/${userId}`);
 }
 
-export function followAPI(userId, toogleFollowingProcess) {
-    toogleFollowingProcess(true, userId);
+export function followAPI(userId) {
     return instanse.post(`follow/${userId}`);
 }
