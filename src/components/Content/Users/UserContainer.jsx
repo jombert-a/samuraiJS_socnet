@@ -1,10 +1,11 @@
 import React from 'react';
 import Users from './Users';
-import { follow, unfollow, setUsers, setCurrentPage, getUsersThunkCreator, followThunkCreator, 
-    unfollowThunkCreator } from '../../../redux/usersReducer';
+import { getUsersThunkCreator, followThunkCreator, unfollowThunkCreator } from '../../../redux/usersReducer';
 import { connect } from 'react-redux'
 import preloader from '../../../commonImages/Spinner-1s-200px.svg';
 import s from './Users.module.css';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class UserContainer extends React.Component {
 
@@ -28,7 +29,6 @@ let mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps,
-    { follow, unfollow, setUsers, setCurrentPage, 
-    getUsersThunkCreator,
-    followThunkCreator, unfollowThunkCreator })(UserContainer)
+export default compose(
+    connect(mapStateToProps,{ getUsersThunkCreator, followThunkCreator, unfollowThunkCreator }),
+    withAuthRedirect) (UserContainer)

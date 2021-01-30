@@ -26,3 +26,7 @@ export function unfollowAPI(userId) {
 export function followAPI(userId) {
     return instanse.post(`follow/${userId}`);
 }
+
+export const authAPI = {
+    me() { return instanse.get(`auth/me`) }
+}

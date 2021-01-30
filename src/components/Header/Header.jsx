@@ -9,9 +9,15 @@ const Header = (props) => {
         <p>Travel-Social-net-on-React</p>
       </div>
       <div className={s.header__right}>
-        <NavLink to='/login'>
-          Login
-        </NavLink>
+        {props.isAuth ?
+          <NavLink to='/profile'>
+            test
+          </NavLink>
+          : 
+          <NavLink to='/login'>
+            login
+          </NavLink>
+        }
       </div>
     </div>
   );
