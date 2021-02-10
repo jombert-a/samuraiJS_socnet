@@ -1,4 +1,4 @@
-import { getProfile, profileAPI, setStatus } from "../api/api";
+import { profileAPI } from "../api/api";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
@@ -97,7 +97,7 @@ export const getProfileThunkCreator = (matchUserId, authUserId) => (dispatch) =>
 }
 
 export const setStatusThunkCreator = (status) => (dispatch) => {
-    setStatus(status);
+    profileAPI.setStatus(status);
     dispatch(updateStatus(status));
 }
 

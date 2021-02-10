@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Map from './Map'
 import { setCoords } from '../../../redux/mapReducer';
-import { getUserCoordinates, fetchCurrentTemp } from './geolocation';
+//import { getUserCoordinates, fetchCurrentTemp } from './geolocation';
 import { connect } from 'react-redux';
 
 class MapContainer extends React.Component {

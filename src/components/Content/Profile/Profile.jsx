@@ -23,7 +23,7 @@ const Profile = (props) => {
                     <img src={pD.photo ? pD.photo : userSmallPhoto} alt='ava' />
                     <span>{pD.fullName}</span>
                 </div>
-                <p>About Me: <ProfileStatus setStatusTC={props.setStatusThunkCreator} status={props.data.status}/></p>
+                <div>About Me: <ProfileStatus setStatusTC={props.setStatusThunkCreator} status={props.data.status}/></div>
             </div>
             <div className={s.profileWrapper}>
                 <div className={s.addpost}>

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
 import { setAuthData, toogleIsFetching, authMeThunkCreator } from '../../redux/authReducer';
-import s from './Header.module.css';
+//import s from './Header.module.css';
 
 
 class HeaderContainer extends React.Component {

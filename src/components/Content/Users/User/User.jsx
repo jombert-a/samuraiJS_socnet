@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 let User = props => {
 
     return (
-        <div key={props.data.id} className={s.user}>
+        <div className={s.user}>
             <div className={s.photoWrapper}>
                 <NavLink to={`/profile/${props.data.id}`}>
                     <img src={`${props.data.photos.small ? props.data.photos.small : userSmallPhoto}`} alt='user' />
@@ -15,12 +15,6 @@ let User = props => {
             <div>
                 <div>
                     {props.data.name}
-                </div>
-                {/* <div>
-                    {`city: ${props.data.location.city} | country: ${props.data.location.country}`}
-                </div> */}
-                <div>
-                    {props.data.status}
                 </div>
                 <div>
                     {

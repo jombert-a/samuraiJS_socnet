@@ -4,9 +4,9 @@ import Messages from './Messages/Messages'
 import React from 'react';
 const Dialogs = (props) => {
     let dialogsArray = props.data.dialogsData.map(el => 
-        <Dialog name={el.name} id={el.id} avaSrc={el.avaSrc} />);
+        <Dialog name={el.name} key={el.id} avaSrc={el.avaSrc} />);
 
-    let messagesArray = props.data.messagesData.map(el => <Messages data={el} />);
+    let messagesArray = props.data.messagesData.map(el => <Messages data={el} key={el.id} />);
 
     let newMessageArea = React.createRef();
 
