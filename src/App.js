@@ -1,5 +1,4 @@
 import './App.css';
-import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
 import Content from './components/Content/Content';
 import Footer from './components/Footer/Footer';
@@ -12,9 +11,9 @@ const App = (props) => {
     <BrowserRouter>
       <Provider store={props.store}>
         <div className="App">
-          <HeaderContainer store={props.store}/>
+          <HeaderContainer />
           <NavBar />
-          <Content store={props.store} />
+          <Content />
           <Footer />
         </div>
       </Provider>

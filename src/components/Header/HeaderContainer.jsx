@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import Header from './Header';
 import { setAuthData, toogleIsFetching, authMeThunkCreator } from '../../redux/authReducer';
 import s from './Header.module.css';
-import preloader from '../../commonImages/Spinner-1s-200px.svg';
-import axios from 'axios';
+
 
 class HeaderContainer extends React.Component {
     componentDidMount() {

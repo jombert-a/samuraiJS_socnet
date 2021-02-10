@@ -1,5 +1,5 @@
 import React from 'react';
-import { addPost, updateNewPost, getProfileThunkCreator } from '../../../redux/profileReducer';
+import { addPost, updateNewPost, getProfileThunkCreator, setStatusThunkCreator } from '../../../redux/profileReducer';
 import Profile from './Profile';
 import { connect } from 'react-redux'
 import preloader from '../../../commonImages/Spinner-1s-200px.svg';
@@ -23,11 +23,12 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = state => {
     return {
         data: state.profilePage,
-        userId: state.auth.id    }
+        userId: state.auth.id 
+    }
 }
 
 export default compose(
     withAuthRedirect, 
     withRouter, 
-    connect(mapStateToProps, { addPost, updateNewPost, getProfileThunkCreator })
+    connect(mapStateToProps, { addPost, updateNewPost, getProfileThunkCreator, setStatusThunkCreator })
 ) (ProfileContainer)

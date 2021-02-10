@@ -2,6 +2,7 @@ import s from './Profile.module.css'
 import Posts from './Posts/Posts'
 import React from 'react';
 import userSmallPhoto from '../../../commonImages/userSmallPhoto.png'
+import ProfileStatus from './ProfileInfo/ProfileStatus';
 
 const Profile = (props) => {
     let newPostArea = React.createRef();
@@ -22,7 +23,7 @@ const Profile = (props) => {
                     <img src={pD.photo ? pD.photo : userSmallPhoto} alt='ava' />
                     <span>{pD.fullName}</span>
                 </div>
-                <p>About Me: {pD.aboutMe}</p>
+                <p>About Me: <ProfileStatus setStatusTC={props.setStatusThunkCreator} status={props.data.status}/></p>
             </div>
             <div className={s.profileWrapper}>
                 <div className={s.addpost}>
